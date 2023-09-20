@@ -1,0 +1,23 @@
+# docker-gyala
+
+- git clone git@github.com:palla451/docker-gyala.git
+
+- for laravel 10 branch master, for laravel 8 change brnach to  'laravel8'
+
+- git clone laravel-project src
+
+- from bash in docker-gyala directory  './local.sh start'
+
+- from bash in docker-gyala directory  './local.sh ssh'
+
+- composer install
+
+- php artisan key:generate
+
+- php artisan migrate
+
+- php artisan passport:install --force
+
+- php artisan db:seed
+
+Enjoi!!!
