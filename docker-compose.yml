@@ -24,6 +24,7 @@ services:
       - "cos_test:172.16.50.101"
   # Database
   database:
+    platform: linux/x86_64
     image: mysql:8.0.25
     volumes:
       - ./docker/volumes/mysql:/var/lib/mysql
