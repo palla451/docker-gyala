@@ -72,10 +72,10 @@ services:
     extra_hosts:
       - "cos_test:172.16.50.101"
   # Mailing Server
-  mailhog:
-    image: mailhog/mailhog:latest
-    logging:
-      driver: "none"
-    ports:
-      - "1025:1025"
-      - "8025:8025"
+#  mailhog:
+#    image: mailhog/mailhog:latest
+#    logging:
+#      driver: "none"
+#    ports:
+#      - "1025:1025"
+#      - "8025:8025"
