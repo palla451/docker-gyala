@@ -5,6 +5,7 @@ docker/volumes/mysql/*
 !docker/volumes/redis
 docker/volumes/redis/*
 !docker/volumes/redis/.gitkeep
+!src
 
 .DS_Store
 .idea

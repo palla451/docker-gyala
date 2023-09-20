@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function _up() {
+  cp env.txt ./src/.env
   docker-compose --env-file ./src/.env up -d
 }
 
