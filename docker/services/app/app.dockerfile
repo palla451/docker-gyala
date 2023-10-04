@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:7.4-fpm
 
 WORKDIR /var/www
 
@@ -16,6 +16,11 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
+
+#
+## Aggiungi il repository PPA e installa il pacchetto Suricata
+# Installa il pacchetto software-properties-common per abilitare add-apt-repository
+RUN apt-get update && apt-get install -y software-properties-common
 
 # Graphics Draw
 # Install system dependencies
@@ -38,9 +43,20 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     libldb-dev \
     libldap2-dev \
+    python3 \
+    python3-pip \
+#    suricata \
     && pecl install amqp \
     && docker-php-ext-enable amqp
 
+
+
+#RUN apt-get update && apt-get install -y \
+#    suricata \
+#     pip install sigmalint \
+##    yara-python \
+##    python-yaml \
+#    pip install sigmalint \
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -61,5 +77,7 @@ RUN nvm install v16.17.0
 RUN apt-get update && apt-get install -y cron
 RUN echo "* * * * * root php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1" >> /etc/crontab
 RUN touch /var/log/cron.log
+
+RUN pip install sigmalint
 
 CMD bash -c "cron && php-fpm"
