@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y \
     libldap2-dev \
     python3 \
     python3-pip \
-#    suricata \
+    suricata \
     && pecl install amqp \
     && docker-php-ext-enable amqp
 
@@ -78,6 +78,14 @@ RUN apt-get update && apt-get install -y cron
 RUN echo "* * * * * root php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1" >> /etc/crontab
 RUN touch /var/log/cron.log
 
-RUN pip install sigmalint
+# Install sigmalint without user interaction
+RUN pip3 install sigmalint
+
+# Install python-yaml without user interaction
+RUN pip3 install pyyaml
+
+RUN pip3 install yara-python
+
+RUN pip3 install suricata-update
 
 CMD bash -c "cron && php-fpm"
